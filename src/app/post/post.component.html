@@ -6,4 +6,9 @@
 <img src="{{ post?.imagePath }}" alt="" class="img-responsive" />
 <p>{{ post?.author }}</p>
 <p>{{ post?.dateTimeCreated }}</p>
-<button>Edit</button> | <button (click)="onDelete()">Delete</button>
+<button type="button" class="btn btn-default btn-sm btn-link" (click)="likePost()">
+  <span class="glyphicon glyphicon-thumbs-up"></span> Like ({{ post?.numberOfLikes }})
+</button>
+<br /><br />
+<button class="btn btn-success" (click)="onEdit()">Edit</button> |
+<button (click)="onDelete()" class="btn btn-danger">Delete</button>
