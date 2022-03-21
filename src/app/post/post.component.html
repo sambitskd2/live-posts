@@ -1,13 +1,14 @@
-<h2>Nature</h2>
+<h2>{{ post?.title | uppercase}}</h2>
 <p>
-  Nature is a British weekly scientific journal founded and based in London,
-  England. As a multidisciplinary publication, Nature features peer-reviewed
-  research from a variety of academic disciplines, mainly in science and
-  technology.
+  {{ post?.description }}
 </p>
 
-<img src="https://nypost.com/wp-content/uploads/sites/2/2021/12/nature_14.jpg?quality=80&strip=all&w=744" alt="" class="img-responsive">
-<p>Author:test@test.com</p>
-<p>Date: 1 jan 2022</p>
-<button>Edit</button> |
-<button>Delete</button>
+<img src="{{ post?.imagePath }}" alt="" class="img-responsive" />
+<p>{{ post?.author }}</p>
+<p>{{ post?.dateTimeCreated | date }}</p>
+<button type="button" class="btn btn-default btn-sm btn-link" (click)="likePost()">
+  <span class="glyphicon glyphicon-thumbs-up"></span> Like ({{ post?.numberOfLikes }})
+</button>
+<br /><br />
+<button class="btn btn-success" (click)="onEdit()">Edit</button> |
+<button (click)="onDelete()" class="btn btn-danger">Delete</button>
