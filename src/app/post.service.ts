@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Post } from './post.model';
 @Injectable({ providedIn: 'root' })
 export class PostService {
+  listChangedEvent:EventEmitter<Post[]> = new EventEmitter();
   listOfPosts: Post[] = [
-    new Post(
+    /* new Post(
       'Nature',
       `Nature is a British weekly scientific journal founded and based in London, England. As a multidisciplinary publication, Nature features peer-reviewed research from a variety of academic disciplines, mainly in science and technology. `,
       `https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/07/23090714/nature-1024x682.jpeg`,
@@ -26,7 +27,7 @@ export class PostService {
       `By test@test.com`,
       new Date(),
       4
-    ),
+    ), */
   ];
 
   //   facility 1
@@ -52,5 +53,10 @@ export class PostService {
   // facility:6
   likePost(index: number) {
     this.listOfPosts[index].numberOfLikes++;
+  }
+  // facility:7
+  setPosts(listOfPosts: Post[]) {
+    this.listOfPosts = listOfPosts;
+    this.listChangedEvent.emit(listOfPosts);
   }
 }
